@@ -1,0 +1,15 @@
+<!--- Page Name- ATEQ_Quote_View -------->
+<apex:page standardController="Quote" extensions="CustomQuotePDFController" >
+    <apex:form >
+        <div style="text-align: center;">
+            <apex:commandButton value="SAVE PDF" action="{!saveToNotes}" />
+        </div>
+        
+        <div>
+            <apex:iframe src="/apex/ATEQ_Quote_Template?id={!Quote.Id}"/>
+        </div>
+        
+    </apex:form>
+    
+    
+</apex:page>

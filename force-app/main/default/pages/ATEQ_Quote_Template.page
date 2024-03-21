@@ -1,0 +1,242 @@
+<!--- V4 ---->
+<!--- Page Name- ATEQ_Quote_Template -------->
+<apex:page standardController="Quote" renderAs="pdf" showHeader="false" standardStylesheets="false" extensions="ATEQ_Quote_Template_Ctrl" applyHtmlTag="false" applyBodyTag="false"> <!-- contentType="application/pdf" -->  
+<head>
+    <style>
+       <!---  @page {
+        margin-left: 0cm;
+        margin-right: 0cm;
+        margin-top: 0cm;
+        margin-bottom: 0cm;
+        }-------->           
+        @page {
+        margin-left: 10cm;
+        margin-right: 0cm;
+        margin-top: 0cm;
+        margin-bottom: 0cm;
+            background-image:url("{!$Resource.ATEQ_DOTS}");
+            background-repeat: no-repeat;
+            background-position: 105% 115%; 
+            background-size: 30% auto;
+         @top-right {
+            content: "Page " counter(page);
+            padding-right:50px;
+            padding-top:1000px;
+            font-size: 16px;
+            }
+           
+
+        }
+
+
+        .fixed-footer {
+        position: fixed;
+        bottom: 0;
+        width: 80%;
+        background-color: white;
+        padding: 10px;
+        text-align: center;
+        }
+        .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        z-index: 1000; 
+        }
+    </style>
+</head> 
+
+<body>
+    
+    <div style="margin:0;font-family: Arial, sans-serif;">
+        <div>
+            <!-- Child 1-->
+            <table class="header">
+                <tr>
+                    <td style="width: 25%; vertical-align: top;">
+                        <!-- Logo Image comes here renderAs="pdf" -->
+                        <img src="{!$Resource.ATEQ_LOGO}" alt="Logo Image" width="200" height="175" />
+                    </td>
+                    <td style="width: 37%; vertical-align: top;">
+                    </td>
+                    <td style="width: 75%; text-align: right;vertical-align:top;">
+                        <!-- Quote Details comes here -->
+                        <div style="padding-bottom:10px;padding-top:15px;padding-right:90px;">
+                            <span style="font-weight: Bolder;line-height: 0.5em;font-size: 50px;">QUOTE</span>
+                        </div>
+                        
+                        <div style="text-align: left;padding-right:10px;">
+                            <span style="font-size: 16px;line-height: 0.5em;">Quote # : {!Quote.QuoteNumber}</span><br/>
+                            <span style="font-size: 16px;line-height: 0.5em;">Quote Date : <apex:outputText value="{0,date,MM'/'dd'/'yyyy}"> <apex:param value="{!Quote.CreatedDate}" /> </apex:outputText></span><br/>
+                            <span style="font-size: 16px;line-height: 0.5em;">Sales Person : {!Quote.Owner.Name}</span><br/>
+                            
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div style="margin-top:125px">
+            <!-- Child 2-->
+            <div style="text-align: right;padding-left:62.5%;margin-bottom:35px;">
+                <div style="text-align: left;padding-right:10px;">
+                    <span style="font-size: 16px;line-height: 0.5em;">E-mail : {!Quote.Owner.Email}</span><br/>
+                    <span style="font-size: 16px;line-height: 0.5em;">Phone : {!Quote.Owner.Phone}</span><br/>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid black; text-align: center;width: 85%;margin:0 auto;">
+                <!-- Black Line comes here -->
+            </div>
+        </div>
+        <div>
+            <!-- Child 3-->
+            <table style="padding-bottom:12px;margin-left:5px;margin-right:5px;">
+                <tr>
+                    <td style="width: 60%; vertical-align: top;">
+                        <p style="font-weight: Bold; font-size: 18px;line-height: 0.5em;padding-bottom:4px;">ATTENTION</p>
+                        <span style="font-size: 15px;line-height: 0.5em;">CUSTOMER NAME</span><br/>
+                        <span style="font-size: 15px;line-height: 0.5em;">CUSTOMER COMPANY NAME</span><br/>
+                        <span style="font-size: 15x;line-height: 0.5em;">CUSTOMER ADDRESS</span><br/>
+                        <span style="font-size: 15px;line-height: 0.5em;">CUSTOMER EMAIL</span><br/>
+                        <span style="font-size: 15px;line-height: 0.5em;" >CUSTOMER PHONE #</span><br/>
+                        
+                        
+                    </td>
+                    <td style="width: 38%; vertical-align: top;text-align: right;">
+                        <!-- Quote Details comes here -->
+                        
+                        <p style="font-weight: Bold; font-size: 18px;line-height: 0.5em;padding-bottom:4px;">COMPANY</p>
+                        <span style="font-size: 15x;line-height: 0.75em;">{!Quote.Customer_Name__c}</span><br/>
+                        <span style="font-size: 15px;line-height: 0.75em;">{!Quote.Customer_Address__c}</span><br/>
+                        <span style="font-size: 16px;line-height: 0.1em;">{!Quote.Customer_Email__c}</span><br/>
+                        <span style="font-size: 16px;line-height: 0.1em;">{!Quote.Customer_Phone__c}</span><br/>
+                        
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <!-- Child 4-->
+            <!-- Red Line comes here -->
+            <div style="border-top: 7px solid #DC143C; width: 100%;text-align: center;margin: 0 auto;">
+            </div>
+        </div>
+        <div>
+            <!-- Child 5-->
+            <div style="margin-bottom: 10px; margin-top: 7px">
+                <div style="background-color: #E0E0E0;padding-top: 5px;padding-bottom: 7px;margin-left: auto; margin-right: auto; width: 55%; text-align: center; border: 1.5px solid black;">
+                    <div style="margin-top:10px;padding-top:1px;margin-bottom:10px;padding-bottom:1px;margin-left: 10px; margin-right: 10px; ">
+                        <p style="font-weight: Bold; font-size: 15px;line-height: 0.5em;">APPLICATION:</p>
+                        <p style="font-size: 14px;line-height: 0.5em;padding-bottom:10px">XXX</p>
+                        <p style="font-weight: Bold; font-size: 15px;line-height: 0.5em;">EST. DELIVERY</p>
+                        <p style="font-size: 14px;line-height: 0.5em;padding-bottom:10px;font-style: italic;">LEAD TIME TO BE CONFIMED UPON RECEIPT OF PO</p>
+                        <p style="font-weight: Bold; font-size: 15px;line-height: 0.5em;">GRAND TOTAL:</p>
+                        <p style="font-size: 14px;line-height: 0.5em;padding-bottom:10px">{!Quote.GrandTotal} USD</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <!-- Child 6-->
+            <div style="font-size: 14px;text-align: center;line-height: 0.2em;">
+                <!-- Purchase Line comes here -->
+                <p>PURCHASE ORDER TO BE SENT TO LEAKTESTORDERS@ATEQUSA.COM WITH YOUT QUOTE NUMBER</p>
+            </div>      
+        </div>
+        <div>
+            <!-- Child 7-->
+            <div style="text-align: center;">
+                <!-- Map Image comes here -->
+                <p>
+                    <img src="{!$Resource.ATEQ_MAP}" alt="Map Image" width="500" height="296" />
+                </p>
+            </div> 
+            
+        </div>          
+        <div class="fixed-footer">
+            <!-- Child 8-->
+            <table>
+                <tr>
+                    <td style="width: 30%; vertical-align: top;">
+                        
+                    </td>
+                    <td style="width: 65%; vertical-align: top;margin-right:2%;">
+                        <div style="text-align: center;">
+                            <!-- Address comes here -->
+                            <span style="font-size: 13px;line-height: 0.05em;font-weight: 900;">ATEQ CORP.</span><br/>
+                            <span style="font-size: 12px;line-height: 0.05em;">35980 INDUSTRIAL RD, LIVONIA, MI 48150</span><br/>
+                            <span style="font-size: 12px;line-height: 0.05em;">T.:(734)838-3100-F.:(734)838-0644 LEAKTESTORDERS@ATEQUSA.COM</span><br/>
+                            <span style="font-size: 12px;line-height: 0.05em;">ATEQUSA.COM</span><br/>
+                            <p style="border-top:0.5px solid black;line-height: 0.3em;width: 75%;margin: 0 auto;"></p>
+                            <span style="font-size: 11px;line-height: 0.05em;font-weight: 600;">A MEMBER OF THE GLOBAL ATEQ CORPORATE NETWORK</span>
+                            
+                        </div>
+                    </td>
+                    <td style="width: 2%;" class="page-image">
+                        <!-- <p style="text-align: right;">
+                            <img src="{!$Resource.ATEQ_DOTS}" alt="Dots Image" style="width: 50px; height: 50px;" />
+                        </p>-->
+                       
+                        
+                         
+                        
+    
+                     </td>   
+                    </tr>
+            </table> 
+            
+        </div>
+        
+        <div style="page-break-after: always;"></div>
+        
+        <div>
+            <!-- Child 10-->
+            <div style="margin-top:200px">
+                <table style="width: 98%; border-collapse: collapse; border-spacing: 0;margin:10px auto;text-align:center;">
+                    <thead>
+                        <tr style="background-color: #DC143C; color: white; border: 1px solid black; padding: 15px; text-align:left;font-size: 18px;font-weight: 900;vertical-align:middle;">
+                            <td style="padding-left: 15px;">#</td>
+                            <td>Item(s) &amp; Description</td>
+                            <td style="text-align:center;">Qty</td>
+                            <td style="text-align:center;">Unit Price</td>
+                            <td style="text-align:center;">Total (USD)</td>
+                            <td colspan="7"><hr style="border: 0; margin-top:30px"/></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:variable var="index" value="{!1}" />
+                        <apex:repeat value="{!Quote.QuoteLineItems}" var="qli">
+                            <tr style="color: black; border: 1px solid black; padding: 15px; text-align: left;">
+                                <td style="vertical-align:top;padding-top: 10px;padding-left: 15px;">{!index}</td>
+                                <td style="vertical-align:top;padding-top: 10px;">
+                                    <span style="font-size: 16px;line-height: 0.2em;font-weight: 900;">{!qli.Product2.Name}</span><br/>
+                                    <span style="font-size: 14px;line-height: 0.2em;font-style: italic;">SKU:{!qli.Product2.SKU__c}</span><br/>
+                                    <span style="font-size: 14px;line-height: 0.2em;">{!qli.Product2.Description}</span>
+                                </td>
+                                <td style="vertical-align:top;text-align:center;padding-top: 10px;"><apex:outputText value="{0, number, 0}"> <apex:param value="{!qli.Quantity}" /></apex:outputText></td>
+                                <td style="vertical-align:top;text-align:center;padding-top: 10px;"><apex:outputText value="{0, number, #,##0.00}"><apex:param value="{!qli.UnitPrice}" /> </apex:outputText></td>
+                                <td style="vertical-align:top;text-align:center;padding-top: 10px;"><apex:outputText value="{0, number, #,##0.00}"><apex:param value="{!qli.TotalPrice}" /></apex:outputText></td>
+                            </tr>
+                            <tr style="display: none;" is=" {!mod(index, 3) == 0}">  
+                            <td colspan="7">
+                            <hr style="border: 0; border-top: 1px solid #BBBDBF;margin-top:90px"/>
+                            </td>
+                            </tr>
+                            <tr>
+                                <td colspan="7"><hr style="border: 0; border-top: 1px solid #BBBDBF;margin-top:90px"/></td>
+                            </tr>
+                          
+                            <apex:variable var="index" value="{!index + 1}" />
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>      
+        </div>
+        
+    </div>
+    
+</body>
+</apex:page>

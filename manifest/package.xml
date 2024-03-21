@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>ATEQ_Quote_Template_Ctrl</members>
+        <members>CustomQuotePDFController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>ATEQ_Quote_Template</members>
+        <members>ATEQ_Quote_View</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>Quote.Customer_Address__c</members>
+        <members>Quote.Customer_Company_Name__c</members>
+        <members>Quote.Customer_Email__c</members>
+        <members>Quote.Customer_Name__c</members>
+        <members>Quote.Customer_Phone__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Product2.SKU__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>ATEQ_LOGO</members>
+        <members>ATEQ_MAP</members>
+        <members>ATEQ_DOTS</members>
+        <name>StaticResource</name>
+    </types>
+    <version>59.0</version>
+</Package>
